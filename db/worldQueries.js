@@ -24,7 +24,7 @@ const getDisciplineById = async (id) => {
 
 //attribute queries
 const getAllAttributes = async () => {
-    const [rows] = await pool.query('SELECT * FROM attributes ORDER BY catagory, name');
+    const [rows] = await pool.query('SELECT * FROM attributes ORDER BY category, name');
     return rows;
 };
 
