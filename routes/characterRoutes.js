@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const characterQueries = require('../db/characterQueries');
 
+// get all characters
 router.get('/', async (req, res) => {
     try {
         const characters = await characterQueries.getAllCharacters();
@@ -11,6 +12,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// get one character by id
 router.get('/:id', async (req, res) => {
     try {
         const character = await characterQueries.getCharacterById(req.params.id);
@@ -21,6 +23,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// add new character
 router.post('/', async (req, res) => {
     try {
         const character = await characterQueries.createCharacter(req.body);
@@ -30,6 +33,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+// update character
 router.put('/:id', async (req, res) => {
     try {
         const character = await characterQueries.updateCharacter(req.params.id, req.body);
@@ -40,11 +44,12 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+// delete character
 router.delete('/:id', async (req, res) => {
     try {
         const deleted = await characterQueries.deleteCharacter(req.params.id);
-        if(!deleted) return res.status(404).json({ error: 'Character not found' });
-        res.json({ message: 'Character deleted' }); 
+        if (!deleted) return res.status(404).json({ error: 'Character not found' });
+        res.json({ message: 'Character deleted' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
