@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const worldQueries = require('../db/worldQueries');
 
+// get all clans route for clan selection ui and quick reference
 router.get('/clans', async (req, res) => {
     try {
         const clans = await worldQueries.getAllClans();
@@ -11,6 +12,7 @@ router.get('/clans', async (req, res) => {
     }
 });
 
+// get single clan route by id used for details screens
 router.get('/clans/:id', async (req, res) => {
     try {
         const clan = await worldQueries.getClanById(req.params.id);
@@ -20,6 +22,7 @@ router.get('/clans/:id', async (req, res) => {
     }
 });
 
+// load discipline list route for population and lookup
 router.get('/disciplines', async (req, res) => {
     try {
         const disciplines = await worldQueries.getAllDisciplines();
@@ -29,6 +32,7 @@ router.get('/disciplines', async (req, res) => {
     }
 });
 
+// fetch single discipline using id slug error if missing
 router.get('/disciplines/:id', async (req, res) => {
     try {
         const discipline = await worldQueries.getDisciplineById(req.params.id);
@@ -40,6 +44,7 @@ router.get('/disciplines/:id', async (req, res) => {
     }
 });
 
+// returns all attributes used for character stats display
 router.get('/attributes', async (req, res) => {
     try {
         const attributes = await worldQueries.getAllAttributes();
@@ -49,6 +54,7 @@ router.get('/attributes', async (req, res) => {
     }
 });
 
+// grab all skills with category for skill trees and sheets
 router.get('/skills', async (req, res) => {
     try {
         const skills = await worldQueries.getAllSkills();
@@ -58,6 +64,7 @@ router.get('/skills', async (req, res) => {
     }
 });
 
+// get list of merits for merit selection new char and edit ui
 router.get('/merits', async (req, res) => {
     try {
         const merits = await worldQueries.getAllMerits();
@@ -67,6 +74,7 @@ router.get('/merits', async (req, res) => {
     }
 });
 
+// get all flaws for flaws browser and add to char modal
 router.get('/flaws', async (req, res) => {
     try {
         const flaws = await worldQueries.getAllFlaws();
@@ -76,6 +84,7 @@ router.get('/flaws', async (req, res) => {
     }
 });
 
+// backgrounds endpoint for backgrounds select and view
 router.get('/backgrounds', async (req, res) => {
     try {
         const backgrounds = await worldQueries.getAllBackgrounds();
@@ -85,4 +94,5 @@ router.get('/backgrounds', async (req, res) => {
     }
 });
 
+// expose routes to app
 module.exports = router;
