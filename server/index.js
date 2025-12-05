@@ -19,7 +19,7 @@ app.use(async (req, res, next) => {
     const originalJson = res.json.bind(res);
     res.json = function(data) {
         const statusCode = res.statusCode;
-        const ipAddress = req.ip || req.connection.remoteAddress;
+        const ipAddress = req.ip || req.socket.remoteAddress;
         requestLogQueries.logRequest(
             req.method,
             req.path,
