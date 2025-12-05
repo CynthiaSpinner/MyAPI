@@ -1,5 +1,5 @@
 {
-  "name": "myapi",
+  "name": "vtm-gm-api",
   "version": "1.0.0",
   "description": "A comprehensive GM API for Vampire: The Masquerade with character management, world information, and AI story generation",
   "main": "server/index.js",
